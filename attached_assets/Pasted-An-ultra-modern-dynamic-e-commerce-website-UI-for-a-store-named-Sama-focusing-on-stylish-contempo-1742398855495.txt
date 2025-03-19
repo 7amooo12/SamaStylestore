@@ -1,0 +1,33 @@
+An ultra-modern, dynamic e-commerce website UI for a store named Sama, focusing on stylish, contemporary chandeliers and lighting. The design uses a bold color palette of vibrant gradients (e.g., neon purple, electric blue, and hot pink) set against a sleek, dark background for dramatic contrast.
+
+Homepage:
+
+A large animated hero section featuring a 3D-rendered chandelier rotating slowly, with subtle neon light reflections.
+Bold, animated text that transitions in with a swipe or slide effect.
+Navigation Bar:
+
+A floating, semi-transparent navbar that transitions from a minimal icon-only view to a full menu upon hover or scroll.
+Animated hover effects that incorporate glowing outlines or moving gradient borders.
+Product Showcase:
+
+Interactive carousel of modern chandeliers, each displayed in a vibrant color accent.
+When hovering over a product, it expands or pops out with a smooth, fluid animation, showing details like price, material, and “Add to Cart” button.
+Subtle parallax background behind each product card for depth.
+Animations & Interactions:
+
+Use micro-interactions such as button hover pulses, floating icons, and smooth scrolling transitions.
+Implement motion-based transitions between sections, like a slide-in effect or fade-and-zoom effect.
+Checkout & Cart:
+
+A multi-step checkout with animated progress indicators (e.g., steps lighting up as you go).
+Floating cart widget that slides in from the side when opened, with a slick, neon-highlighted border.
+Responsive & Mobile-Friendly:
+
+On mobile, incorporate gesture-based interactions (swipe for next product, pull-down for refresh).
+Keep the bold color scheme but ensure readability with clear typography and properly sized elements.
+Typography:
+
+A clean, geometric sans-serif for headlines with a slightly futuristic vibe.
+A lightweight sans-serif for body text, ensuring readability against the dark background.
+Overall, the UI should feel energetic, high-tech, and eye-catching, capturing the essence of modern lighting while providing a seamless, fun user experience."
+
