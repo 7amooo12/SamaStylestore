@@ -1,4 +1,4 @@
-import { useLanguage } from "@/hooks/use-language-2";
+import { useLanguage } from "@/hooks/use-language-new";
 import { motion } from "framer-motion";
 import { FaGlobe } from "react-icons/fa";
 

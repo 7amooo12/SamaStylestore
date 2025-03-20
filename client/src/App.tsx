@@ -12,7 +12,7 @@ import Contact from "@/pages/Contact";
 import Checkout from "@/pages/Checkout";
 import OrderConfirmation from "@/pages/OrderConfirmation";
 import { CartProvider } from "@/hooks/use-cart";
-import { LanguageProvider } from "@/hooks/use-language-2";
+import { LanguageProvider } from "@/hooks/use-language-new";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 function Router() {
@@ -39,7 +39,6 @@ function App() {
           <Layout>
             <Router />
           </Layout>
-          <LanguageSwitcher />
           <Toaster />
         </CartProvider>
       </LanguageProvider>

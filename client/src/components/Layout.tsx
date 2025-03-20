@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import CartSidebar from "./CartSidebar";
+import LanguageSwitcher from "./LanguageSwitcher";
 import { useCart } from "@/hooks/use-cart";
 
 interface LayoutProps {
@@ -30,6 +31,9 @@ export default function Layout({ children }: LayoutProps) {
         isOpen={isCartOpen} 
         onClose={() => setIsCartOpen(false)} 
       />
+      <div className="fixed bottom-4 right-4 z-50">
+        <LanguageSwitcher />
+      </div>
     </div>
   );
 }
