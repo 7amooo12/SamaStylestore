@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useContext, ReactNode } from "react";
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 // Define possible languages
 export type Language = "ar" | "en";
@@ -122,76 +122,57 @@ const translations: TranslationsType = {
   }
 };
 
-// Create context type
 interface LanguageContextType {
   language: Language;
-  setLanguage: (lang: Language) => void;
+  isRTL: boolean;
   toggleLanguage: () => void;
   t: (key: string) => string;
-  isRTL: boolean;
 }
 
-// Create context with default values
-const LanguageContext = createContext<LanguageContextType>({
-  language: "ar",
-  setLanguage: () => {},
-  toggleLanguage: () => {},
-  t: (key: string) => key,
-  isRTL: true
-});
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-// Provider component
-export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>("ar");
-  const isRTL = language === "ar";
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const [language, setLanguage] = useState<Language>(() => {
+    const saved = localStorage.getItem('language');
+    return (saved as Language) || 'ar';
+  });
 
-  // Effect to handle language changes
+  const isRTL = language === 'ar';
+
   useEffect(() => {
-    // Try to load language from localStorage
-    const savedLang = localStorage.getItem("language") as Language;
-    if (savedLang && (savedLang === "ar" || savedLang === "en")) {
-      setLanguageState(savedLang);
-    }
-
-    // Apply language direction to document
-    document.documentElement.dir = isRTL ? "rtl" : "ltr";
     document.documentElement.lang = language;
-    
-    // Apply Arabic font class if needed
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
     if (isRTL) {
-      document.body.classList.add("font-tajawal");
+      document.body.classList.add('font-tajawal');
     } else {
-      document.body.classList.remove("font-tajawal");
+      document.body.classList.remove('font-tajawal');
     }
   }, [language, isRTL]);
 
-  // Set language helper
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem("language", lang);
-  };
-  
-  // Toggle between languages
   const toggleLanguage = () => {
-    const newLang = language === "ar" ? "en" : "ar";
+    const newLang = language === 'ar' ? 'en' : 'ar';
     setLanguage(newLang);
+    localStorage.setItem('language', newLang);
   };
-  
-  // Translate function
+
   const t = (key: string): string => {
     if (translations[language] && translations[language][key]) {
       return translations[language][key];
     }
     return key;
   };
-  
-  // Provide context
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, t, isRTL }}>
+    <LanguageContext.Provider value={{ language, isRTL, toggleLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );
-};
+}
 
-// Hook for components to consume the context
-export const useLanguage = () => useContext(LanguageContext);
+export function useLanguage() {
+  const context = useContext(LanguageContext);
+  if (context === undefined) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+}
