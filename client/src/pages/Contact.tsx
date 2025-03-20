@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+import { FaWhatsapp, FaFacebookF, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, {
@@ -73,12 +74,12 @@ export default function Contact() {
 
           <div className="space-y-4">
             <div className="flex items-start space-x-4">
-              <div className="bg-gradient-to-br from-purple-500 to-pink-500 p-3 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </div>
+              <motion.div 
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="bg-gradient-to-br from-purple-500 to-pink-500 p-3 rounded-full"
+              >
+                <FaMapMarkerAlt className="text-white text-lg" />
+              </motion.div>
               <div>
                 <h3 className="text-lg font-medium">Our Location</h3>
                 <p className="text-gray-400">123 Lighting Blvd, New York, NY 10001</p>
@@ -86,11 +87,12 @@ export default function Contact() {
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="bg-gradient-to-br from-blue-500 to-purple-500 p-3 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-              </div>
+              <motion.div 
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="bg-gradient-to-br from-blue-500 to-purple-500 p-3 rounded-full"
+              >
+                <FaPhone className="text-white text-lg" />
+              </motion.div>
               <div>
                 <h3 className="text-lg font-medium">Phone Number</h3>
                 <p className="text-gray-400">+1 (555) 123-4567</p>
@@ -98,12 +100,12 @@ export default function Contact() {
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="bg-gradient-to-br from-pink-500 to-blue-500 p-3 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                </svg>
-              </div>
+              <motion.div 
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="bg-gradient-to-br from-pink-500 to-blue-500 p-3 rounded-full"
+              >
+                <FaEnvelope className="text-white text-lg" />
+              </motion.div>
               <div>
                 <h3 className="text-lg font-medium">Email</h3>
                 <p className="text-gray-400">contact@samalighting.com</p>
@@ -111,15 +113,47 @@ export default function Contact() {
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="bg-gradient-to-br from-blue-500 to-purple-500 p-3 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                  <path d="M12 8V4m0 4 3 3m-3-3-3 3M4 12h4m0 0v4m0-4-3 3m7 3v4m0-4-3 3m10-3h-4m0 0v4m0-4 3 3m-3-11 3-3m-6 0-3 3"></path>
-                </svg>
-              </div>
+              <motion.div 
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="bg-gradient-to-br from-blue-500 to-purple-500 p-3 rounded-full"
+              >
+                <FaClock className="text-white text-lg" />
+              </motion.div>
               <div>
                 <h3 className="text-lg font-medium">Store Hours</h3>
                 <p className="text-gray-400">Monday - Friday: 9AM - 7PM<br />Saturday: 10AM - 6PM<br />Sunday: Closed</p>
               </div>
+            </div>
+            
+            <h3 className="text-xl font-medium mt-8 mb-4">Connect With Us</h3>
+            <div className="flex space-x-4">
+              <motion.a
+                href="https://wa.me/15551234567" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.15, y: -5 }}
+                className="bg-gradient-to-br from-green-500 to-green-600 p-3 rounded-full inline-flex items-center justify-center"
+              >
+                <FaWhatsapp className="text-white text-2xl" />
+              </motion.a>
+              
+              <motion.a
+                href="https://facebook.com/samalighting" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.15, y: -5 }}
+                className="bg-gradient-to-br from-blue-600 to-blue-700 p-3 rounded-full inline-flex items-center justify-center"
+              >
+                <FaFacebookF className="text-white text-2xl" />
+              </motion.a>
+              
+              <motion.a
+                href="tel:+15551234567"
+                whileHover={{ scale: 1.15, y: -5 }}
+                className="bg-gradient-to-br from-purple-500 to-pink-500 p-3 rounded-full inline-flex items-center justify-center"
+              >
+                <FaPhone className="text-white text-2xl" />
+              </motion.a>
             </div>
           </div>
         </div>
