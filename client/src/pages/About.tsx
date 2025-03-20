@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FaInfoCircle, FaLeaf, FaLightbulb } from "react-icons/fa";
 
 export default function About() {
   const fadeIn = {
@@ -86,46 +87,53 @@ export default function About() {
           >
             <h2 className="text-3xl font-bold text-white text-center mb-8">Our Values</h2>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-gray-700/50 shadow-lg">
-                <div className="h-16 w-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M12 16v-4"></path>
-                    <path d="M12 8h.01"></path>
-                  </svg>
-                </div>
+              <motion.div
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-gray-700/50 shadow-lg transition-all duration-300"
+              >
+                <motion.div 
+                  whileHover={{ rotate: 10, scale: 1.1 }}
+                  className="h-16 w-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mb-4"
+                >
+                  <FaInfoCircle className="text-white text-3xl" />
+                </motion.div>
                 <h3 className="text-xl font-semibold text-white mb-2">Craftsmanship</h3>
                 <p className="text-gray-300">
                   We believe in the value of expert craftsmanship and attention to detail. Each fixture is meticulously crafted with precision and care.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-gray-700/50 shadow-lg">
-                <div className="h-16 w-16 bg-gradient-to-br from-blue-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                  </svg>
-                </div>
+              <motion.div
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-gray-700/50 shadow-lg transition-all duration-300"
+              >
+                <motion.div 
+                  whileHover={{ rotate: 10, scale: 1.1 }}
+                  className="h-16 w-16 bg-gradient-to-br from-blue-500 to-pink-500 rounded-lg flex items-center justify-center mb-4"
+                >
+                  <FaLeaf className="text-white text-3xl" />
+                </motion.div>
                 <h3 className="text-xl font-semibold text-white mb-2">Sustainability</h3>
                 <p className="text-gray-300">
                   We are committed to sustainable practices in all aspects of our business, from material sourcing to energy-efficient designs.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-gray-700/50 shadow-lg">
-                <div className="h-16 w-16 bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                    <polyline points="16 6 12 2 8 6"></polyline>
-                    <line x1="12" x2="12" y1="2" y2="15"></line>
-                  </svg>
-                </div>
+              <motion.div
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-gray-700/50 shadow-lg transition-all duration-300"
+              >
+                <motion.div 
+                  whileHover={{ rotate: 10, scale: 1.1 }}
+                  className="h-16 w-16 bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg flex items-center justify-center mb-4"
+                >
+                  <FaLightbulb className="text-white text-3xl" />
+                </motion.div>
                 <h3 className="text-xl font-semibold text-white mb-2">Innovation</h3>
                 <p className="text-gray-300">
                   We continuously push the boundaries of design and technology to create lighting solutions that are both innovative and timeless.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </motion.section>
 
@@ -162,18 +170,28 @@ export default function About() {
               ].map((member, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ y: -5 }}
-                  className="bg-gray-800/50 rounded-xl overflow-hidden shadow-lg backdrop-blur-sm border border-gray-700/50"
+                  whileHover={{ y: -10, scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="bg-gray-800/50 rounded-xl overflow-hidden shadow-lg backdrop-blur-sm border border-gray-700/50 cursor-pointer"
                 >
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="p-4 text-center">
+                  <div className="w-full h-64 overflow-hidden">
+                    <motion.img
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-64 object-cover"
+                    />
+                  </div>
+                  <motion.div 
+                    className="p-4 text-center"
+                    initial={{ opacity: 0.8 }}
+                    whileHover={{ opacity: 1, backgroundColor: "rgba(107, 70, 193, 0.2)" }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <h3 className="text-lg font-semibold text-white">{member.name}</h3>
                     <p className="text-gray-400">{member.role}</p>
-                  </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
