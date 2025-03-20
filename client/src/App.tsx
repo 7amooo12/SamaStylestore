@@ -12,6 +12,8 @@ import Contact from "@/pages/Contact";
 import Checkout from "@/pages/Checkout";
 import OrderConfirmation from "@/pages/OrderConfirmation";
 import { CartProvider } from "@/hooks/use-cart";
+import { LanguageProvider } from "@/hooks/use-language";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 function Router() {
   return (
@@ -32,12 +34,15 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <CartProvider>
-        <Layout>
-          <Router />
-        </Layout>
-        <Toaster />
-      </CartProvider>
+      <LanguageProvider>
+        <CartProvider>
+          <Layout>
+            <Router />
+          </Layout>
+          <LanguageSwitcher />
+          <Toaster />
+        </CartProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }
