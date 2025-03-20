@@ -190,14 +190,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   );
 }
 
-// Hook must be default export for Fast Refresh to work properly
-export default function useLanguage() {
+export function useLanguage() {
   const context = useContext(LanguageContext);
   if (context === undefined) {
     throw new Error("useLanguage must be used within a LanguageProvider");
   }
   return context;
 }
-
-// Also export as named export for convenience
-export { useLanguage };
