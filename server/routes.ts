@@ -4,6 +4,13 @@ import { storage } from "./storage";
 import { insertCartItemSchema, insertSubscriberSchema } from "@shared/schema";
 import { z } from "zod";
 import { nanoid } from "nanoid";
+import Stripe from "stripe";
+
+if (!process.env.STRIPE_SECRET_KEY) {
+  throw new Error('Missing required Stripe secret: STRIPE_SECRET_KEY');
+}
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API routes prefix
@@ -356,6 +363,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     } catch (error) {
       res.status(500).json({ message: "Failed to subscribe to newsletter" });
+    }
+  });
+
+  // Stripe payment route for one-time payments
+  app.post(`${API_PREFIX}/create-payment-intent`, async (req: Request, res: Response) => {
+    try {
+      const { amount } = req.body;
+      
+      if (!amount || typeof amount !== 'number' || amount <= 0) {
+        return res.status(400).json({ message: "Invalid amount" });
+      }
+      
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: Math.round(amount * 100), // Convert to cents
+        currency: "usd",
+        automatic_payment_methods: {
+          enabled: true,
+        },
+      });
+      
+      res.json({ clientSecret: paymentIntent.client_secret });
+    } catch (error: any) {
+      console.error("Stripe error:", error);
+      res.status(500).json({ message: "Error creating payment intent: " + error.message });
     }
   });
 

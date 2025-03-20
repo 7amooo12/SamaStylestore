@@ -61,10 +61,8 @@ export default function PromoSection() {
               ))}
             </div>
             
-            <Link href="/products">
-              <a className="inline-block bg-gradient-to-r from-[#8A2BE2] to-[#1E90FF] text-white font-medium py-3 px-8 rounded-lg hover:opacity-90 transition-all duration-300 transform hover:-translate-y-1">
-                Explore Collection
-              </a>
+            <Link href="/products" className="inline-block bg-gradient-to-r from-[#8A2BE2] to-[#1E90FF] text-white font-medium py-3 px-8 rounded-lg hover:opacity-90 transition-all duration-300 transform hover:-translate-y-1">
+              Explore Collection
             </Link>
           </div>
           

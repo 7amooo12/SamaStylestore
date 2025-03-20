@@ -16,8 +16,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
       ref={cardRef}
       className="category-card group relative h-60 overflow-hidden rounded-xl cursor-pointer"
     >
-      <Link href={`/products?category=${category.slug}`}>
-        <a className="absolute inset-0">
+      <Link href={`/products?category=${category.slug}`} className="absolute inset-0">
           {/* Background layer with gradient and parallax effect */}
           <div className="absolute inset-0 bg-gray-800/30 parallax-bg transform transition-transform duration-500 group-hover:scale-110">
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent"></div>
@@ -58,7 +57,6 @@ export default function CategoryCard({ category }: CategoryCardProps) {
           
           {/* After element for gradient border */}
           <div className="absolute inset-0 rounded-xl p-[1px] bg-gradient-to-r from-[#8A2BE2]/30 via-[#1E90FF]/30 to-[#FF1493]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-        </a>
       </Link>
     </div>
   );
